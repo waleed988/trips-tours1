@@ -1,0 +1,104 @@
+<div class="w-100 mt-5">
+    <nav class="navbar navbar-expand-lg my_navbar mb-0">
+      <a class=" nav-heading1 ml-5 my_fonts"><b class='nav-heading1'>Trips Tours</a></b>
+      <button class="navbar-toggler nav-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+        <ul class="navbar-nav nav-margin">
+          <li class="nav-item nav-heading mr-3">
+            <%= link_to 'HOME',root_path , class:'nav-heading  nav-link'%>
+          </li>
+          
+          <% if !current_user&.admin?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'ABOUT', new_user_session_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          
+          
+           <% if current_user&.admin?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'SHOW BOOKINGS', tours_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if !user_signed_in? %>
+           <li class="nav-item mr-3">
+             <%= link_to 'LOGIN', new_user_session_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin?%>
+           <li class="nav-item mr-3">
+             <%= link_to 'TRANSPORT', transports_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'HOTELS', hotels_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin?%>
+           <li class="nav-item mr-3">
+             <%= link_to 'NEW HOTEL', new_hotel_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin?%>
+           <li class="nav-item mr-3">
+             <%= link_to 'NEW TRANSPORT', new_transport_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <%if current_user&.admin?%>
+           <li class="nav-item mr-3">
+             <%= link_to 'VISITINGPOINTS', visitingpoints_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin? %>
+          <li class="nav-item mr-3">
+             <%= link_to 'CREATE NEW VISITINGPOINT', new_visitingpoint_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if !current_user&.admin?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'GIVE FEEDBACK', new_review_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if current_user&.admin?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'SHOW FEEDBACK', reviews_path , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          
+          <% if !current_user&.admin?%>
+          <li class="nav-item mr-3">
+            <a class="nav-link nav-heading" href="#">CONTACT US</a>
+          </li>
+          <% end %>
+          
+          <% if user_signed_in?%>
+          <li class="nav-item mr-3">
+             <%= link_to 'LOGOUT', destroy_user_session_path , method: :delete , class:"nav-link nav-heading" %>
+          </li>
+          <% end %>
+          <% if !current_user&.admin?%>
+          <li class="nav-item mr-3">
+            <a href="#" class="header-btn style='text-decoration: none;'"> 
+            <i class="fa fa-phone mr-2" style="font-size:20px"></i> +10 (67) 678 2567</a>
+          </li>
+          <%  end %>
+        </ul>
+
+      </div>
+    </nav>
+
+  </div>

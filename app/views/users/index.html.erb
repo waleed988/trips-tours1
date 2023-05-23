@@ -1,0 +1,9 @@
+<% if current_user.admin? %>
+
+<% else %>
+  <p>Hello <%= current_user.email%> ! You are <%= current_user.role %></p>
+  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+  <hr>
+  <%= render template: "users/show"%>
+
+<%end%>

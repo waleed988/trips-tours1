@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<div class='container'>
+
+<% if current_user.admin? %>
+<div class='text-center effect devise container'>
+<h2 class = ' mb-5' style='color:#00095e;'><b>Create VisitingPoints </b></h2>
+  <%= form_with scope: :visitingpoint, url:visitingpoints_path ,local: true   do |form| %>
+      <% if @visitingpoint&.errors&.any? %>
+        <ul>
+          <% @visitingpoint.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+     <% end %>
+        <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+        <p>
+          <%= form.label :Name ,style:'color:#00095e;' %><br>
+          <%= form.text_field :name %>
+        </p>
+
+        <p>
+          <%= form.label :Location ,style:'color:#00095e;'%><br>
+          <%= form.text_field :location%>
+        </p> 
+        <p class='mt-5'> 
+          <%= form.submit "Add Visiting Point" ,class:'login100-form-btn',style:'width:20%; margin-left: 506px;'%>
+        </p>
+      <% end %>
+  </div>
+<% else%>
+  You Do Not Have Access To Do This Action
+<% end %>
+</div>
+<%= render partial: 'home/footer'%>

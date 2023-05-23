@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<% if current_user.buyer? %>
+<div class='text-center effect devise container' style='height:100%;'>
+<h2 class = ' mb-5' style='color:#00095e;'><b>Create Tour Bookings </b></h2>
+  <%= form_with scope: :tour, url:tours_path ,local: true   do |form| %>
+      <% if @tour&.errors&.any? %>
+        <ul>
+          <% @tour.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+     <% end %>
+        <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+     <p>
+          <%= form.label :Name ,style:'color:#00095e;' %><br>
+          <%= form.text_field :name%>
+        </p> 
+          <p>
+            <%= form.label :Start_Date ,style:'color:#00095e;' %><br>
+            <%= form.text_field :start_date,class:'date-field', type:"Date"%>
+          </p>
+          
+          <p>
+            <%= form.label :End_Date ,style:'color:#00095e;' %><br>
+            <%= form.text_field :end_date,class:'date-field', type:"Date"%>
+          </p>  
+        
+         <p>
+          <%= form.label :No_of_Persons ,style:'color:#00095e;' %><br>
+          <%= form.number_field :no_of_persons%>
+        </p> 
+        <p>
+          <%= form.label :Phone_No ,style:'color:#00095e;' %><br>
+          <%= form.text_field :phone%>
+        </p> 
+         <p>
+          <%= form.label :Visiting_Point ,style:'color:#00095e;' %><br>
+          <%= form.select :visitingpoint_id, Visitingpoint.all.collect { |p| [ p.name, p.id ] },{:size => 30}, include_blank: true ,class:'date-field' %>
+        </p>
+        <p>
+          <%= form.label :Transport ,style:'color:#00095e;' %><br>
+          <%= form.select :transport_id, Transport.all.collect { |p| [ p.registration_no, p.id ] },{:size => 30}, include_blank: true ,class:'date-field' %>
+        </p>
+         <p>
+          <%= form.label :Hotel ,style:'color:#00095e;'%><br>
+          <%= form.select :hotel_id, Hotel.all.collect { |p| [ p.name, p.id ] },{:size => 30}, include_blank: true ,class:'date-field' %>
+        </p>
+        
+
+        <p class='mt-5'> 
+          <%= form.submit "Book Now" ,class:'login100-form-btn',style:'width:20%; margin-left: 515px;'%>
+        </p>
+      <% end %>
+  </div>
+<% else%>
+  You Do Not Have Access To Do This Action
+<% end %>
+
+<%= render partial: 'home/footer'%>

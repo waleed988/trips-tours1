@@ -1,0 +1,92 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<% if current_user&.admin?%>
+    <div class='text-center effect devise container' style='height:100%'>
+      <h1 style='color:#00095e;'><b>Welcome Admin</b></h1>
+      <h2 style='color:#00095e;'><b>client's Bookings</b></h2>
+      <br>
+       <% if @tour&.errors&.any? %>
+        <ul>
+          <% @tour.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+     <% end %>
+        <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+        <% Tour.all.each do |tour| %>
+            <hr>
+             <p style='color:#00095e;'>
+              <strong>User_Id:</strong>
+              <%= tour.user_id %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Client Name:</strong>
+              <%= tour.name %>
+            </p>
+            
+           
+        
+            <p style='color:#00095e;'>
+              <strong>No of Persons</strong>
+              <%= tour.no_of_persons %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Start Date:</strong>
+              <%= tour.start_date %>
+            </p>
+            
+            <p style='color:#00095e;'>
+              <strong>End Date:</strong>
+              <%= tour.end_date %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Visiting Point</strong>
+              <% visiting_point = Visitingpoint.find(tour.visitingpoint_id).name%>
+              <%=visiting_point%>
+            </p>
+            
+            <p style='color:#00095e;'>
+              <strong>Hotel</strong>
+              <% hotel = Hotel.find(tour.hotel_id).name%>
+              <%=hotel%>
+              <%=Hotel.find(tour.hotel_id).category%>
+            </p>
+            
+            <p style='color:#00095e;'>
+              <strong>Transport</strong>
+              <% transport = Transport.find(tour.transport_id).registration_no%>
+              <%=transport%>
+              <%=Transport.find(tour.transport_id).category%>
+
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Bill:</strong>
+              <%= tour.bill %>
+            </p>
+
+           
+            
+            <p>
+            <hr>
+            
+
+        <% end %>
+       
+    </div>
+    <% else %>
+    <div class='text-center effect devise container' style='height:100%'>
+    
+      <h1 style='color:#00095e;'>Welcome To Trip & Tours</h1>
+      <p style='color:#00095e;'>
+      <%= current_user.name%> <br>
+      You Are A <%= current_user.role%>
+      </p>
+    </div>
+<% end %>
+
+
+<%= render partial: 'home/footer'%>

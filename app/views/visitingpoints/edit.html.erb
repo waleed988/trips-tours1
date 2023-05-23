@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<div class='text-center effect devise container'>
+<h1 class = ' mb-5' style='color:#00095e;'><b>Edit VisitingPoint</b></h1>
+ 
+<%= form_with(model: @visitingpoint, local: true) do |form| %>
+ 
+  <% if @visitingpoint&.errors&.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@visitingpoint&.errors&.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @visitingpoint.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :Name ,style:'color:#00095e;' %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :location ,style:'color:#00095e;' %><br>
+    <%= form.text_area :location %>
+  </p>
+ 
+  <p>
+    <%= form.submit 'UPdate' ,class:'login100-form-btn' %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', visitingpoints_path %>
+</div>
+<%= render partial: 'home/footer'%>

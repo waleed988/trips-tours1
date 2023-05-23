@@ -1,0 +1,47 @@
+
+
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+
+<% if current_user&.admin?%>
+    <div class='text-center effect devise container' style='height:100%'>
+      <h1 style='color:#00095e;'><b>Welcome Admin</b></h1>
+      <h2 style='color:#00095e;'><b>Clients Reviews</b></h2>
+      <br>
+       <% if @review&.errors&.any? %>
+        <ul>
+          <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+     <% end %>
+        <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+        <% Review.all.each do |review| %>
+            <hr>
+             <p style='color:#00095e;'>
+              <strong>User_Id:</strong>
+              <%= review.id %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Message :</strong>
+              <%= review.message %>
+            </p>
+
+           
+            
+            <p>
+            <hr>
+            
+
+        <% end %>
+
+    </div>
+<% end %>
+
+
+<%= render partial: 'home/footer'%>
+

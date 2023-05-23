@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+
+<% if current_user&.admin?%>
+    <div class='text-center effect devise container' style='height:100%'>
+      <h1 style='color:#00095e;'><b>Welcome Admin</b></h1>
+      <h2 style='color:#00095e;'><b>Hotels Details</b></h2>
+      <br>
+        <% Hotel.all.each do |hotel| %>
+            <hr>
+             <p style='color:#00095e;'>
+              <strong style='color:#00095e;'>Hotel_Id:</strong>
+              <%= hotel.id %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong style='color:#00095e;'>Hotel_Name:</strong>
+              <%= hotel.name %>
+            </p>
+
+            <p style='color:#00095e;'>
+              <strong style='color:#00095e;'>Category :</strong>
+              <%= hotel.category %>
+            </p>
+            
+              <p style='color:#00095e;'>
+              <strong style='color:#00095e;'>Price_Per_Night</strong>
+              <%=hotel.price_per_night %>
+            </p>
+
+            <p style='color:#00095e;'>
+              <strong style='color:#00095e;'>Location</strong>
+              <%=hotel.location %>
+            </p>
+            
+            <p>
+            <%= link_to 'Show', hotel_path(hotel) %>
+            <%= link_to 'Edit', edit_hotel_path(hotel) %>
+            <%= link_to 'Destroy', hotel_path(hotel),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+            </p>
+            <hr>
+            
+
+        <% end %>
+
+    </div>
+<% end %>
+
+
+<%= render partial: 'home/footer'%>

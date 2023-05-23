@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<div class='text-center effect devise container visitingpoint-item' style='height:300px;'>
+<p>
+  <strong style='color:#00095e;font-size:30px;'>Visiting Point Name:   </strong>
+  <%= @visitingpoint.name %>
+</p>
+ 
+<p>
+  <strong style='color:#00095e;font-size:30px;'>Location:   </strong>
+  <%= @visitingpoint.location  %>
+</p>
+ 
+<%= link_to 'Back', visitingpoints_path %>
+</div>
+<%= render partial: 'home/footer'%>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  no_of_persons: MyString
+  visitingpoint: one
+  hotel: one
+  transport: one
+
+two:
+  user: two
+  no_of_persons: MyString
+  visitingpoint: two
+  hotel: two
+  transport: two

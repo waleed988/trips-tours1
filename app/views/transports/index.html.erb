@@ -1,0 +1,62 @@
+
+
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+
+<% if current_user&.admin?%>
+    <div class='text-center effect devise container' style='height:100%'>
+      <h1 style='color:#00095e;'><b>Welcome Admin</b></h1>
+      <h2 style='color:#00095e;'><b>Transport Details</b></h2>
+      <br>
+        <% Transport.all.each do |transport| %>
+            <hr>
+             <p style='color:#00095e;'>
+              <strong>Transport_Id:</strong>
+              <%= transport.id %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Registration_No</strong>
+              <%= transport.registration_no %>
+            </p>
+
+            <p style='color:#00095e;'>
+              <strong>Category :</strong>
+              <%= transport.category %>
+            </p>
+            
+              <p style='color:#00095e;'>
+              <strong>Price</strong>
+              <%=transport.price %>
+            </p>
+
+            <p style='color:#00095e;'>
+              <strong>Driver_Name</strong>
+              <%=transport.driver_name %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>Driver_CNIC</strong>
+              <%=transport.driver_cnic %>
+            </p>
+             <p style='color:#00095e;'>
+              <strong>Driver_Phone</strong>
+              <%=transport.driver_phone %>
+            </p>
+            
+            <p>
+            <%= link_to 'Show', transport_path(transport) %>
+            <%= link_to 'Edit', edit_transport_path(transport) %>
+            <%= link_to 'Destroy', transport_path(transport),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+            </p>
+            <hr>
+            
+
+        <% end %>
+
+    </div>
+<% end %>
+
+
+<%= render partial: 'home/footer'%>
+

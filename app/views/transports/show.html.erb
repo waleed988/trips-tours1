@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<div class='text-center effect devise container visitingpoint-item' style='height:300px;'>
+<p>
+  <strong>Vehicle Registration # :</strong>
+  <%= @transport.registration_no %>
+</p>
+ 
+<p>
+  <strong>Category :</strong>
+  <%= @transport.category %>
+</p>
+
+<p>
+  <strong>Price :</strong>
+  <%= @transport.price %>
+</p>
+ 
+ <p>
+  <strong>Driver Name :</strong>
+  <%= @transport.driver_name %>
+</p>
+<p>
+  <strong>Driver CNIC :</strong>
+  <%= @transport.driver_cnic %>
+</p>
+<p>
+  <strong>Driver Phone # :</strong>
+  <%= @transport.driver_phone %>
+</p>
+<%= link_to 'Back', transports_path %>
+</div>
+<%= render partial: 'home/footer'%>

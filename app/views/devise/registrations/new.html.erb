@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+
+<div class='container text-center effect devise' style='height:460px;'>
+<h2  class = 'mb-5' style='color:#00095e;'><b>Sign up</b></h2>
+
+<%= form_for(resource, as: @user , url: registration_path(@user),:html => {:multipart => true}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+ <div class="field">
+    <%= f.label :name ,style:'color:#00095e;' %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email ,style:'color:#00095e;' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field " style='color:#00095e;'>
+    <%= f.label :password ,style:'color:#00095e;'%>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length  %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation ,style:'color:#00095e;' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions mt-5">
+    <%= f.submit "Sign up" ,class:'login100-form-btn'%>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+<%= render partial: 'home/footer'%>

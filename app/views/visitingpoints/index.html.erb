@@ -1,0 +1,45 @@
+
+
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+
+<% if current_user&.admin?%>
+    <div class='text-center effect devise container' style='height:100%'>
+      <h1 style='color:#00095e;'><b>Welcome Admin</b></h1>
+      <h2 style='color:#00095e;'><b>VisitingPoints Details</b></h2>
+      <br>
+        <% Visitingpoint.all.each do |visitingpoint| %>
+            <hr>
+             <p style='color:#00095e;'>
+              <strong>Visitingpoint Id:</strong>
+              <%= visitingpoint.id %>
+            </p>
+            <p style='color:#00095e;'>
+              <strong>VisitingPoint Name:</strong>
+              <%= visitingpoint.name %>
+            </p>
+
+            <p style='color:#00095e;'>
+              <strong>Location :</strong>
+              <%= visitingpoint.location %>
+            </p>
+            
+                         
+            <p>
+            <%= link_to 'Show', visitingpoint_path(visitingpoint) %>
+            <%= link_to 'Edit', edit_visitingpoint_path(visitingpoint) %>
+            <%= link_to 'Destroy', visitingpoint_path(visitingpoint),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+            </p>
+            <hr>
+            
+
+        <% end %>
+
+    </div>
+<% end %>
+
+
+<%= render partial: 'home/footer'%>
+

@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "users" %>
+<%= render partial: 'home/navbar'%>
+<div class='text-center effect devise container visitingpoint-item' style='height:300px;'>
+<p>
+  <strong>Hotel Name :</strong>
+  <%= @hotel.name %>
+</p>
+ 
+<p>
+  <strong>Category :</strong>
+  <%= @hotel.category %>
+</p>
+
+<p>
+  <strong>Price Per Night :</strong>
+  <%= @hotel.price_per_night %>
+</p>
+ 
+ <p>
+  <strong>Location :</strong>
+  <%= @hotel.location %>
+</p>
+<p>
+  <strong>Contact # :</strong>
+  <%= @hotel.contact_no %>
+</p>
+
+<%= link_to 'Back', hotels_path %>
+</div>
+<%= render partial: 'home/footer'%>
